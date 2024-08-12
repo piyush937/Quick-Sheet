@@ -13,6 +13,7 @@ body{
     display: flex;
     align-items: flex-end;
     padding-left: 1rem;
+    
 
 }
 .page-action{
@@ -171,18 +172,33 @@ z-index: 5;
  .sheet-add-icon{
    width: 2vw;
  }
+
+ .sheet-add-icon:hover{
+    cursor: pointer;
+ }
  .sheet-folder-cont{
     display: flex;
     align-items: center;
     height: 80%;
     width: calc(100vw - 2vw);
+    overflow: auto;
     
  }
  .sheet-folder{
+    height: 80%;
+ /*  background-color: lightblue;*/
     text-decoration:underline ;
     font-weight: bold;
     text-decoration-thickness: 3px;
     font-size: 0.9rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .sheet-content{
+    width: 5rem;
+   //*background-color: lightgreen;*/
  }
 
 .color-prop{

@@ -45,6 +45,3 @@ addressBar.value = `${colId}${rowId}`
 })
 }
 
-// By delfault we want the address bar to have some value that is first cell we dont want it to be empty for the edge cases
-let firstCell = document.querySelector(".cell");
-firstCell.click();//By default click ho jaega via DOM

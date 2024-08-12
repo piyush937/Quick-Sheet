@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./style.css">
    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <title>Exel Clone</title>
+    <title>Quick Sheet</title>
 </head>
 <body>
     <div class="page-action-cont">
@@ -16,15 +16,15 @@
         <div class="page-action">Help</div>
     </div>
     <div class="cellprops-action-cont">
-        <span class="material-symbols-outlined">
+        <span class="material-symbols-outlined copy">
             content_copy
             </span>
 
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined cut">
                 content_cut
                 </span>
 
-                <span class="material-symbols-outlined">
+                <span class="material-symbols-outlined paste">
                     content_paste
                     </span>
 
@@ -81,7 +81,12 @@
                                                     </span>
                                                     <input type="color"class="bg-color-prop">
                                               </div>
-                                               
+                                              <span class="material-symbols-outlined download">
+                                                download
+                                                </span>   
+                                                <span class="material-symbols-outlined open">
+                                                    upload
+                                                    </span>            
 
     </div>
     <div class="formula-action-cont">
@@ -107,13 +112,24 @@
                 </span>
         </div>
        
-            <div class="sheet-folder-cont">
-                <div class="sheet-folder">Sheet1</div>
+            <div  class="sheet-folder-cont">
+             
+                </div>
             </div>
     </div>
 
 
     <script src="./grid.js"></script>
+    <script src="./cyclicPathTrace.js"></script>
+    <script src="./cycleValidation.js"></script>
+    <script src="./sheetsHandling.js"></script>
     <script src="./cell-properties.js"></script>
+    <script src="./formula.js"></script>
+    <script src="./cutCopyPaste.js"></script>
+    <script src="./openSave.js"></script>
+    
+    
+    
+    
 </body>
 </html>

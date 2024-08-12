@@ -1,24 +1,37 @@
 //Storage
-let sheetDB = [];
+let collectedSheetDB = []; // Contains All SheetDb
+ let sheetDB = [];
 
-for(let i = 0; i < rows ; i++){
- let sheetRow = [];
-for(let j = 0; j < cols ; j++){
-    let cellProp = {
-       bold : false,
-       italic : false,
-       underline : false,
-       alignment : "left",
-       fontFamily : "monospace",
-       fontSize : "14",
-       fontColor : "#000000",
-       bgColor : "#000000",
-    }
-    sheetRow.push(cellProp);
-}
-sheetDB.push(sheetRow);
+ {
+ let addSheetBtn = document.querySelector(".sheet-add-icon");
+ addSheetBtn.click();
 
-}
+ }
+
+
+ //
+ //for(let i = 0; i < rows ; i++){
+ // let sheetRow = [];
+ //for(let j = 0; j < cols ; j++){
+ //    let cellProp = {
+ //       bold : false,
+ //       italic : false,
+ //       underline : false,
+ //       alignment : "left",
+ //       fontFamily : "monospace",
+ //       fontSize : "14",
+ //       fontColor : "#000000",
+ //       bgColor : "#000000",
+ //       value: "",
+ //       formula: "",
+ //       children: [],
+ //
+ //    }
+ //    sheetRow.push(cellProp);
+ //}
+ //sheetDB.push(sheetRow);
+ //
+ //}
 
 //Selectors for cell properties
 
@@ -148,7 +161,70 @@ alignment.forEach((alignElem) =>{
     })
 })
 
+let allCells = document.querySelectorAll(".cell");
+for(let i = 0 ; i < allCells.length ; i++){
+    addListenerToAttachCellProperties(allCells[i]);
+}
 
+function addListenerToAttachCellProperties(cell){
+ 
+ cell.addEventListener("click" , (e) => {
+
+    let address = addressBar.value;
+    let [rid ,cid]= decodeRidCidFromAddress(address);
+    let cellProp = sheetDB[rid][cid];
+ 
+    // Apply Cell properties
+    cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
+    cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+    cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+    cell.style.fontSize = cellProp.fontSize + "px";
+    cell.style.fontFamily = cellProp.fontFamily ;
+    cell.style.color = cellProp.fontColor ;
+    cell.style.backgroundColor = cellProp.bgColor === "#000000" ? "transparent": cellProp.bgColor;
+    cell.style.textAlign = cellProp.alignment;
+
+   
+
+        // Apply UI wali Properties 
+        bold.style.backgroundColor = cellProp.bold ? activeColorProp : inactivecolorProp ;
+        italic.style.backgroundColor = cellProp.italic ? activeColorProp : inactivecolorProp ;
+        underline.style.backgroundColor = cellProp.underline ? activeColorProp : inactivecolorProp ; 
+      //  fontSize.value = cellProp.fontSize;
+      //  fontFamily.value = cellProp.fontFamily;
+        fontColor.value = cellProp.fontColor;
+        bgColor.value = cellProp.bgColor;
+
+        switch(cellProp.alignment){
+            case "left":
+             leftAlign.style.backgroundColor = activeColorProp;
+             centerAlign.style.backgroundColor = inactivecolorProp;
+             rightAlign.style.backgroundColor = inactivecolorProp;
+    
+                break;
+    
+                case "center":
+                    leftAlign.style.backgroundColor = inactivecolorProp;
+                    centerAlign.style.backgroundColor = activeColorProp;
+                    rightAlign.style.backgroundColor = inactivecolorProp;
+       
+                    break;
+    
+                    case "right":
+                        leftAlign.style.backgroundColor = inactivecolorProp;
+                        centerAlign.style.backgroundColor = inactivecolorProp;
+                        rightAlign.style.backgroundColor = activeColorProp;
+           
+                        break;
+                
+        }
+
+        let formulaBar =  document.querySelector(".formula-bar");
+        formulaBar.value = cellProp.formula;
+        cell.innerText = cellProp.value;
+       
+ })
+}
 
 
 
